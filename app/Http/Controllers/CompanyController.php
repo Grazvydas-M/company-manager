@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class CompanyController extends Controller
 {
@@ -12,9 +14,15 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():view
     {
-        //
+//        dd(Auth::user()->company);
+        $user = Auth::user();
+        $company = $user->company;
+
+//        $companies = Company::orderBy()->get();
+
+        return view('company.index', ['company' => $company]);
     }
 
     /**

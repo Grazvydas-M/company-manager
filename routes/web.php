@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'companies'], function(){
+    Route::get('', [CompanyController::class, 'index'])->name('company.index');
+    Route::get('edit/{company}', [CompanyController::class, 'edit'])->name('company.edit');
+    Route::get('update/{company}', [CompanyController::class, 'update'])->name('company.update');
+
+});
