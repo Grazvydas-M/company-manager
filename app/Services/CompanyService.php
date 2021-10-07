@@ -14,5 +14,9 @@ class CompanyService
 
         return $company;
     }
+    public function update(Company $Company, Array $data)
+    {
+        $Company->update($data);
+    }
 
 }
