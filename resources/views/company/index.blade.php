@@ -33,7 +33,9 @@
                         </div>
                     </div>
                     <form>
+                        @if(Auth::user()->is_admin)
                         <a href="{{ route('company.edit', [$company]) }}" class="btn btn-primary mr-3" style="margin: 3px; float: right",  type="submit">Edit</a>
+                            @endif
                     </form>
                 </div>
             </div>

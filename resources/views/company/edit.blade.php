@@ -8,14 +8,15 @@
                     <div class="card-header">Company Edit</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('company.update', [$company]) }}">
+                            {{ method_field('PUT') }}
 
                             <div class="form-group">
                                 <label>Company name:</label>
-                                <input type="text" class="form-control" name="company_name" value="{{ $company->name }}">
+                                <input type="text" class="form-control" name="name" value="{{ $company->name }}">
                             </div>
                             <div class="form-group">
                                 <label>Specialization:</label>
-                                <input type="text" class="form-control" name="company_specialization" value="{{ $company->specialization }}">
+                                <input type="text" class="form-control" name="specialization" value="{{ $company->specialization }}">
                             </div>
                             <div class="form-group">
                                 <label>Company code:</label>
@@ -23,19 +24,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Country:</label>
-                                <input type="text" class="form-control" name="company_country" value="{{ $company->country }}">
+                                <input type="text" class="form-control" name="country" value="{{ $company->country }}">
                             </div>
                             <div class="form-group">
                                 <label>City:</label>
-                                <input type="text" class="form-control" name="company_city" value="{{ $company->city }}">
+                                <input type="text" class="form-control" name="city" value="{{ $company->city }}">
                             </div>
                             <div class="form-group">
                                 <label>Post Code:</label>
-                                <input type="text" class="form-control" name="company_post_code" value="{{ $company->post_code }}">
+                                <input type="text" class="form-control" name="post_code" value="{{ $company->post_code }}">
                             </div>
 
                             @csrf
-                            <button class="btn btn-primary" type="submit">EDIT</button>
+                            <button class="btn btn-primary" style="margin: 3px; float: right", type="submit">EDIT</button>
                         </form>
                     </div>
                 </div>

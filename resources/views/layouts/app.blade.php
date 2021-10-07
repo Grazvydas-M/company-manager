@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Company Service
@@ -52,19 +52,19 @@
                                 </li>
                             @endif
                         @else
-
-
-
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a  class="nav-link" href="#" role="button" >
+                                Users
+                            </a>
+                            <a  class="nav-link" href="{{ route('company.index') }}" role="button" >
                                     Company
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('company.index') }}">
-                                        About Company
-                                    </a>
-                                </div>
-                            </li>
+                            </a>
+
+
+
+
+
+
+
 
 
 

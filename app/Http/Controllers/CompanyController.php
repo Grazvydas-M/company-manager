@@ -2,27 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
+use App\Models\User;
+use App\Services\CompanyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CompanyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index():view
+    private CompanyService $companyService;
+
+    public function __construct (CompanyService $companyService)
     {
-//        dd(Auth::user()->company);
+        $this->companyService = $companyService;
+    }
+
+    public function index(): view
+    {
+        $users = User::orderBy('name')->get();
+
         $user = Auth::user();
         $company = $user->company;
 
-//        $companies = Company::orderBy()->get();
-
-        return view('company.index', ['company' => $company]);
+        return view('company.index', ['company' => $company, 'users' => $users]);
     }
 
     /**
@@ -65,7 +69,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return \view('company.edit', ['company' => $company]);
     }
 
     /**
@@ -75,9 +79,16 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyUpdateRequest $request, Company $company)
     {
-        //
+        $users = User::orderBy('name')->get();
+
+        $user = Auth::user();
+        $company = $user->company;
+
+       $this->companyService->update($company, $request->all());
+
+        return view('company.index', ['company' => $company, 'users' => $users]);
     }
 
     /**
