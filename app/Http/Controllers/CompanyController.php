@@ -21,12 +21,10 @@ class CompanyController extends Controller
 
     public function index(): view
     {
-        $users = User::orderBy('name')->get();
-
         $user = Auth::user();
         $company = $user->company;
 
-        return view('company.index', ['company' => $company, 'users' => $users]);
+        return view('company.index', ['company' => $company]);
     }
 
     /**
@@ -65,11 +63,11 @@ class CompanyController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Company $company): view
     {
-        return \view('company.edit', ['company' => $company]);
+        return view('company.edit', ['company' => $company]);
     }
 
     /**
@@ -79,7 +77,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyUpdateRequest $request, Company $company)
+    public function update(CompanyUpdateRequest $request, Company $company): view
     {
         $users = User::orderBy('name')->get();
 
