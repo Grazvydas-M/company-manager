@@ -1,4 +1,5 @@
 - git clone https://github.com/Grazvydas-M/company-manager.git
+- composer install
 - php artisan:serve
 - php artisan:migrate --seed
 
