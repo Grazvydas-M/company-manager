@@ -1,4 +1,4 @@
-- git clone 'linkas is gito'
+- git clone https://github.com/Grazvydas-M/company-manager.git
 - php artisan:serve
 - php artisan:migrate --seed
 
